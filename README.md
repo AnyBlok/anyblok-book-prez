@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/anyblok/anyblok-book-prez.svg?branch=master)](https://travis-ci.org/anyblok/anyblok-book-prez)
+[![Build Status](https://travis-ci.org/AnyBlok/anyblok-book-prez.svg?branch=master)](https://travis-ci.org/AnyBlok/anyblok-book-prez)
 
 # anyblok-book-prez
 
