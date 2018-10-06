@@ -4,7 +4,7 @@ class: center, middle, inverse
 
 .footnote[
   [Accueil](#cover) -
-  Pierre Verkest - [@petrusv84](http://twitter.com/petrusv84) -
+  Pierre Verkest - Jean-Sébastion Suzanne -
   [fork this prez](https://github.com/anyblok/anyblok-book-prez)
 ]
 
