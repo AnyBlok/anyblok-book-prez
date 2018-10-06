@@ -38,10 +38,12 @@ class: center, top
 
 # Summarise
 
-## [Intro: what's Anyblok and why](#intro)
-## [First blok \o/](#first_blok)
-
-
+## [Intro: what's Anyblok](#intro)
+## [Setup a project](#project_setup)
+## [Develop bloks](#first_blok)
+## [hack game](#game)
+## [Expose http services](#http)
+## [Ask helps and contribute](#ask)
 
 ???
 
@@ -51,13 +53,15 @@ What we gona see! What this presentation is about?
 
 * What we win ! => Anyblok T-shirt
 
-Donner les liens vers
+* Expected audience: business developers
 
-TODO: créer une entrée DNS pour book.anyblok.org ??
-* [doc régérence](http://doc.anyblok.org/)
+* give some links:
+
+* [ref doc](http://doc.anyblok.org/)
 * [book](https://anyblok.gitbooks.io/anyblok-book/content/en/)
-* [le book gh:anyblok/AnyBlok-book](https://github.com/anyblok/anyblok-book)
-* [le presentation gh:anyblok/AnyBlok-book-prez](
+* [gh book: anyblok/AnyBlok-book](https://github.com/anyblok/anyblok-book)
+* [prez](https://anyblok.github.io/anyblok-book-prez)
+* [gh prez:anyblok/AnyBlok-book and why-prez](
   https://github.com/anyblok/anyblok-book-prez)
 
 ---
@@ -68,9 +72,9 @@ template: tmpl-inverse
 
 ## [What is **Anyblok** ?](#what_is_it)
 
-## [What's Anyblok won't do](#wont_do)
+## [Inspirations, history and why and ecosystem](#history)
 
-## [Inspiration, history and Why](#history)
+## [Workshop context](#workshop)
 
 
 ---
@@ -79,7 +83,7 @@ name: what_is_it
 
 .left-column[
   ## Intro
-  ### What it is
+  ### What's it
 ]
 .right-column[
 
@@ -97,98 +101,92 @@ dependencies between them, just by adding new bloks.
 ]
 
 ???
-
+hack
 * define
 * best 3 killing features
-    *
+    * based on famous libraries make easy to assemble them likes
+    pyramid / beaker...
+    * let manage different levels of responsibilities in code source
+    * A nice syntax to overwrite class with the less magic as possible
+    to respect each library and keep your code looking python code
+* Business application framework
+
 
 ---
 
-name: wont_do
-
-.left-column[
-  ## Intro
-  ### What it is
-  ### What it isn't
-]
-.right-column[
-
-Anyblok is not...
-
-* no user GUI/online interface, we start [furetUI]() for that
-*
-
-]
-
-???
-
----
 
 name: history
 
 .left-column[
   ## Intro
   ### What it is
-  ### What it isn't
   ### History
 ]
 .right-column[
 
-#TODO
+Amphi Shannon
+
+* 14h: Développement d'applications avec le framework Anyblok et
+  son écosystème d'outils et modules métier - Franck Bret
+
+* 14h03: Gestion de stocks en Python avec Anyblok / WMS - Georges Racinet
 
 ]
 
 ???
 
 ---
-name: first_blok
+
+name: workshop
+
+.left-column[
+  ## Intro
+  ### What it is
+  ### History
+  ### Workshop
+]
+.right-column[
+
+## Anyblok repos
+
+https://github.com/AnyBlok
+
+## Anyblok book
+
+https://anyblok.gitbooks.io/anyblok-book/content/en
+
+## Classrooms reservations
+
+]
+
+???
+
+---
+
+name: project_setup
 template: tmpl-inverse
 
-# First blok
-
-## [Tutorial](#)
-
-## [Structure](#structure)
+# Setup your AnyBlok project
 
 ## [Requirements](#requirements)
 
-## [Create your first Anyblok project](#create_it)
+## [init project with cookiecutter](#cookiecutter)
 
 
 ---
 
-name: structure
+name: requirements
 
 .left-column[
-  ## First blok
+  ## Setup project
   ### structure
 ]
 .right-column[
 
 Project structure:
 
-```bash
-├── app.cfg
-├── CHANGELOG.rst
-├── doc
-│   └── [...]
-├── LICENSE
-├── Makefile
-├── my_project
-│   ├── blok1
-│   │   ├── __init__.py
-│   │   ├── model.py
-│   │   ├── tests
-│   │   │   ├── __init__.py
-│   │   │   ├── test_model.py
-│   │   │   └── test_pyramid.py
-│   │   └── views.py
-│   └── __init__.py
-├── README.rst
-├── requirements.dev.txt
-├── setup.py
-└── VERSION
-```
+* Pstgresql
+* SQLAlchemy
 
 ]
 
@@ -201,67 +199,185 @@ Project structure:
 name: requirements
 
 .left-column[
-  ## First blok
+  ## Setup project
   ### structure
-  ### Requirements
 ]
 .right-column[
 
-* Python 3.4 or higher
-* Following examples are working with postgresql (but other SGDB should works)
+Project structure:
+
+```bash
+├── app.cfg                      # Configuration file used in production
+├── app.dev.cfg                  # Configuration file used for development
+├── app.test.cfg                 # Configuration file used to run tests
+├── CHANGELOG.rst                # Change log of your project
+├── doc                          # Documentation directory
+│   └── ...                      #
+├── LICENSE                      # Project license
+├── Makefile                     # A Makefile: see make help to list available commands
+├── README.rst                   # Project's README with basics project information
+├── requirements.dev.txt         # Python package dependencies required for development
+├── requirements.test.txt        # Python package dependencies required for running unittest
+├── rooms_booking                # The python package directory where you develop your bloks
+│   ├── room                     # A blok directory
+│   │   ├── __init__.py          # Blok definition
+│   │   ├── model.py             # Python module with model that define an example class
+│   │   ├── tests                # Test directory
+│   │   │   ├── __init__.py      # Likes standard python, the __init__.py file!
+│   │   │   ├── test_model.py    # File that test model.py methods
+│   │   │   └── test_pyramid.py  # File that test view.py methods
+│   │   └── views.py             # Python module to declare pyramid route components
+│   └── __init__.py              # Likes standard python, the __init__.py file!
+├── setup.cfg                    # The python package setup.cfg file
+├── setup.py                     # The python package setup.py file
+└── VERSION                      # Python package version file
+```
 
 ]
 
 ???
+
+444
+
+---
+name: first_blok
+template: tmpl-inverse
+
+# First bloks
+
+## [Reuse bloks](#external_blok)
+## [Extend bloks](#extend_blok)
+## [Create new model](#create_model)
+## [Use mixins](#mixins)
+## [Relationship](#link_models)
 
 
 ---
 
-name: create_it
+name: external_blok
 
 .left-column[
-  ## First blok
-  ### structure
-  ### Requirements
-  ### Create it
+  ## First bloks
+  ### external
 ]
 .right-column[
 
-* virtual environement ``python -m venv anyblok_workshop_venv``
-* Cookiecutter ``pip install cookiecutter``
-* Generate a projet ``cookiecutter gh:AnyBlok/cookiecutter-anyblok-project``
-* Init your env ``make setup-dev``
-* Play with anyblok:
-    * using console interpreter: ``anyblok_interpreter -c app.test.cfg``
-    * starting web server: ``make run-dev`` then visit [localhost:8080](
-      http://localhost:8080)
+# Reuse bloks
+
 ]
 
 ???
 
-* A virtualenv allow getting different project with differents lib version
-* cookiecutter allow to generate project from cookiecutter recipes (templates)
-* Generate the project structure using anyblok template
-* Get dependencies and int database
-* play with interpreter:
+444
 
-```python
-In [1]: registry.Example.query().all()
-Out[1]: [<Example: An example, 1>]
+---
 
-In [2]: registry.Example.query().all().name
-Out[2]: ['An example']
+name: extend_blok
 
-In [3]: registry.Example.insert(name="Another example")
-Out[3]: <Example: Another example, 2>
+.left-column[
+  ## First blok
+  ### external
+  ### extend
+]
+.right-column[
 
-In [4]: registry.Example.query().all()
-Out[4]: [<Example: An example, 1>, <Example: Another example, 2>]
+# Extend existing bloks
 
-In [5]: registry.Example.query().all().name
-Out[5]: ['An example', 'Another example']
+]
 
-In [7]: registry.commit()
-```
+???
+
+444
+
+---
+
+name: create_model
+
+.left-column[
+  ## First blok
+  ### external
+  ### extend
+  ### model
+]
+.right-column[
+
+# Create new model
+
+]
+
+???
+
+444
+
+---
+
+name: mixins
+
+.left-column[
+  ## First blok
+  ### external
+  ### extend
+  ### model
+  ### mixins
+]
+.right-column[
+
+# Re use mixins
+
+]
+
+???
+
+444
+
+---
+
+name: link_models
+
+.left-column[
+  ## First blok
+  ### external
+  ### extend
+  ### model
+  ### mixins
+  ### relation
+]
+.right-column[
+
+# Link models
+
+]
+
+???
+
+444
+
+---
+name: game
+template: tmpl-inverse
+
+# Hack game
+
+---
+name: http
+template: tmpl-inverse
+
+# Epoxse python API over HTTP
+
+---
+name: ask
+template: tmpl-inverse
+
+## Ask
+
+Open issues in Anyblok's repos
+https://github.com/AnyBlok
+
+## Contribute
+
+https://github.com/AnyBlok
+
+## Thanks
+
 
 ---
