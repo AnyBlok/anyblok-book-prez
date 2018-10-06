@@ -4,10 +4,12 @@ class: center, top
 
 # Summarise
 
-## [Intro: what's Anyblok and why](#intro)
-## [First blok \o/](#first_blok)
-
-
+## [Intro: what's Anyblok](#intro)
+## [Setup a project](#project_setup)
+## [Develop bloks](#first_blok)
+## [hack game](#game)
+## [Expose http services](#http)
+## [Ask helps and contribute](#ask)
 
 ???
 
@@ -17,13 +19,15 @@ What we gona see! What this presentation is about?
 
 * What we win ! => Anyblok T-shirt
 
-Donner les liens vers
+* Expected audience: business developers
 
-TODO: créer une entrée DNS pour book.anyblok.org ??
-* [doc régérence](http://doc.anyblok.org/)
+* give some links:
+
+* [ref doc](http://doc.anyblok.org/)
 * [book](https://anyblok.gitbooks.io/anyblok-book/content/en/)
-* [le book gh:anyblok/AnyBlok-book](https://github.com/anyblok/anyblok-book)
-* [le presentation gh:anyblok/AnyBlok-book-prez](
+* [gh book: anyblok/AnyBlok-book](https://github.com/anyblok/anyblok-book)
+* [prez](https://anyblok.github.io/anyblok-book-prez)
+* [gh prez:anyblok/AnyBlok-book and why-prez](
   https://github.com/anyblok/anyblok-book-prez)
 
 ---

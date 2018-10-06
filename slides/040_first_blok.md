@@ -1,51 +1,26 @@
 name: first_blok
 template: tmpl-inverse
 
-# First blok
+# First bloks
 
-## [Tutorial](#)
-
-## [Structure](#structure)
-
-## [Requirements](#requirements)
-
-## [Create your first Anyblok project](#create_it)
+## [Reuse bloks](#external_blok)
+## [Extend bloks](#extend_blok)
+## [Create new model](#create_model)
+## [Use mixins](#mixins)
+## [Relationship](#link_models)
 
 
 ---
 
-name: structure
+name: external_blok
 
 .left-column[
-  ## First blok
-  ### structure
+  ## First bloks
+  ### external
 ]
 .right-column[
 
-Project structure:
-
-```bash
-├── app.cfg
-├── CHANGELOG.rst
-├── doc
-│   └── [...]
-├── LICENSE
-├── Makefile
-├── my_project
-│   ├── blok1
-│   │   ├── __init__.py
-│   │   ├── model.py
-│   │   ├── tests
-│   │   │   ├── __init__.py
-│   │   │   ├── test_model.py
-│   │   │   └── test_pyramid.py
-│   │   └── views.py
-│   └── __init__.py
-├── README.rst
-├── requirements.dev.txt
-├── setup.py
-└── VERSION
-```
+# Reuse bloks
 
 ]
 
@@ -55,70 +30,84 @@ Project structure:
 
 ---
 
-name: requirements
+name: extend_blok
 
 .left-column[
   ## First blok
-  ### structure
-  ### Requirements
+  ### external
+  ### extend
 ]
 .right-column[
 
-* Python 3.4 or higher
-* Following examples are working with postgresql (but other SGDB should works)
+# Extend existing bloks
 
 ]
 
 ???
 
+444
 
 ---
 
-name: create_it
+name: create_model
 
 .left-column[
   ## First blok
-  ### structure
-  ### Requirements
-  ### Create it
+  ### external
+  ### extend
+  ### model
 ]
 .right-column[
 
-* virtual environement ``python -m venv anyblok_workshop_venv``
-* Cookiecutter ``pip install cookiecutter``
-* Generate a projet ``cookiecutter gh:AnyBlok/cookiecutter-anyblok-project``
-* Init your env ``make setup-dev``
-* Play with anyblok:
-    * using console interpreter: ``anyblok_interpreter -c app.test.cfg``
-    * starting web server: ``make run-dev`` then visit [localhost:8080](
-      http://localhost:8080)
+# Create new model
+
 ]
 
 ???
 
-* A virtualenv allow getting different project with differents lib version
-* cookiecutter allow to generate project from cookiecutter recipes (templates)
-* Generate the project structure using anyblok template
-* Get dependencies and int database
-* play with interpreter:
+444
 
-```python
-In [1]: registry.Example.query().all()
-Out[1]: [<Example: An example, 1>]
+---
 
-In [2]: registry.Example.query().all().name
-Out[2]: ['An example']
+name: mixins
 
-In [3]: registry.Example.insert(name="Another example")
-Out[3]: <Example: Another example, 2>
+.left-column[
+  ## First blok
+  ### external
+  ### extend
+  ### model
+  ### mixins
+]
+.right-column[
 
-In [4]: registry.Example.query().all()
-Out[4]: [<Example: An example, 1>, <Example: Another example, 2>]
+# Re use mixins
 
-In [5]: registry.Example.query().all().name
-Out[5]: ['An example', 'Another example']
+]
 
-In [7]: registry.commit()
-```
+???
+
+444
+
+---
+
+name: link_models
+
+.left-column[
+  ## First blok
+  ### external
+  ### extend
+  ### model
+  ### mixins
+  ### relation
+]
+.right-column[
+
+# Link models
+
+]
+
+???
+
+444
 
 ---
